@@ -17,7 +17,7 @@
 
 @file:Suppress("unused")
 
-package io.github.kyay10.kotlincompilerplugin
+package io.github.kyay10.kotlinassign
 
 import org.gradle.api.provider.Provider
 import org.jetbrains.kotlin.gradle.plugin.KotlinCompilation
@@ -25,7 +25,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinCompilerPluginSupportPlugin
 import org.jetbrains.kotlin.gradle.plugin.SubpluginArtifact
 import org.jetbrains.kotlin.gradle.plugin.SubpluginOption
 
-class MyGradlePlugin : KotlinCompilerPluginSupportPlugin {
+class AssignGradlePlugin : KotlinCompilerPluginSupportPlugin {
   override fun isApplicable(kotlinCompilation: KotlinCompilation<*>): Boolean = true
 
   override fun getCompilerPluginId(): String = BuildConfig.KOTLIN_PLUGIN_ID

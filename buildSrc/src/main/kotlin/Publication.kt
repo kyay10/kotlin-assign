@@ -1,9 +1,9 @@
 object Publication {
-  val name = "kotlin-compiler-plugin"
+  val name = "kotlin-assign"
   val id = "${Developer.groupId}.$name"
   val packageName = id.replace("-", "")
-  val displayName = "Kotlin Compiler Plugin"
-  val description = "A Kotlin compiler plugin that does special things"
+  val displayName = "Kotlin Assign Plugin"
+  val description = "A Kotlin compiler plugin that relaxes the assignment operator"
   val url = "https://github.com/${Developer.id}/$name"
   val vcs = "$url.git"
   val tags = listOf("kotlin")

@@ -16,7 +16,7 @@
  */
 @file:OptIn(ExperimentalCompilerApi::class)
 
-package io.github.kyay10.kotlincompilerplugin
+package io.github.kyay10.kotlinassign
 
 import com.tschuchort.compiletesting.JvmCompilationResult
 import com.tschuchort.compiletesting.KotlinCompilation
@@ -27,9 +27,10 @@ import org.junit.jupiter.api.TestInstance
 import java.io.*
 import java.lang.reflect.InvocationTargetException
 import kotlin.system.measureTimeMillis
+import kotlin.test.Test
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class MyPluginTest {
+class AssignPluginTest {
   private val outStream = ByteArrayOutputStream()
   private val sampleFiles = mutableListOf<SourceFile>()
   private lateinit var compiledSamples: JvmCompilationResult
@@ -48,6 +49,18 @@ class MyPluginTest {
                 }
             } milliseconds")
     outStream.writeTo(System.out)
+  }
+
+  @Test
+  fun `works for simple assignment`() {
+    val output = compiledSamples.runMain()
+    assert(output == "42\n")
+  }
+
+  @Test
+  fun `works for vectors`() {
+    val output = compiledSamples.runMain("Vec2Kt")
+    assert(output == "Vec2(x=3.0, y=4.0)\n")
   }
 }
 
@@ -76,13 +89,14 @@ private fun compileSources(
 ) =
     KotlinCompilation()
         .apply {
+          supportsK2 = true
           sources = sourceFiles
-          compilerPluginRegistrars = listOf(MyPluginRegistrar())
-          commandLineProcessors = listOf(MyCommandLineProcessor())
+          compilerPluginRegistrars = listOf(AssignPluginRegistrar())
+          commandLineProcessors = listOf(AssignCommandLineProcessor())
           inheritClassPath = true
           messageOutputStream = outputStream
           verbose = true
-          languageVersion = "1.9"
+          languageVersion = "2.0"
           kotlincArguments += "-Xallow-kotlin-package"
           kotlincArguments += "-Xcontext-receivers"
         }

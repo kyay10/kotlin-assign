@@ -15,19 +15,32 @@
  * limitations under the License.
  */
 
-package io.github.kyay10.kotlincompilerplugin
+package io.github.kyay10.kotlinassign
 
 import com.google.auto.service.AutoService
 import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 import org.jetbrains.kotlin.config.CompilerConfiguration
+import org.jetbrains.kotlin.extensions.internal.InternalNonStableExtensionPoints
+import org.jetbrains.kotlin.fir.extensions.FirExtensionRegistrar
+import org.jetbrains.kotlin.fir.extensions.FirExtensionRegistrarAdapter
+import org.jetbrains.kotlin.resolve.extensions.AssignResolutionAltererExtension
 
 @OptIn(ExperimentalCompilerApi::class)
 @AutoService(CompilerPluginRegistrar::class)
-class MyPluginRegistrar : CompilerPluginRegistrar() {
+class AssignPluginRegistrar : CompilerPluginRegistrar() {
   override val supportsK2: Boolean
     get() = true
 
+  @OptIn(InternalNonStableExtensionPoints::class)
   override fun ExtensionStorage.registerExtensions(configuration: CompilerConfiguration) {
+    FirExtensionRegistrarAdapter.registerExtension(
+        object : FirExtensionRegistrar() {
+          override fun ExtensionRegistrarContext.configurePlugin() {
+            +::AssignAltererExtension
+            +::AssignCheckers
+          }
+        })
+    AssignResolutionAltererExtension.registerExtension(K1AssignAlterer())
   }
 }

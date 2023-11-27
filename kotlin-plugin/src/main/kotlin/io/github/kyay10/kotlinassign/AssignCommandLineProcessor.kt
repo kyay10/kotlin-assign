@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-package io.github.kyay10.kotlincompilerplugin
+package io.github.kyay10.kotlinassign
 
 import com.google.auto.service.AutoService
-import io.github.kyay10.kotlincompilerplugin.utils.OptionCommandLineProcessor
+import io.github.kyay10.kotlinassign.utils.OptionCommandLineProcessor
 import org.jetbrains.kotlin.compiler.plugin.CommandLineProcessor
 import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 
 @OptIn(ExperimentalCompilerApi::class)
 @AutoService(CommandLineProcessor::class)
-class MyCommandLineProcessor : CommandLineProcessor by Companion {
+class AssignCommandLineProcessor : CommandLineProcessor by Companion {
   companion object : OptionCommandLineProcessor(BuildConfig.KOTLIN_PLUGIN_ID)
 }

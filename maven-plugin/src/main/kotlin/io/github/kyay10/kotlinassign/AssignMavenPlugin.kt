@@ -14,14 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.kyay10.kotlincompilerplugin
+package io.github.kyay10.kotlinassign
 
 import org.apache.maven.plugin.MojoExecution
 import org.apache.maven.project.MavenProject
 import org.jetbrains.kotlin.maven.KotlinMavenPluginExtension
 import org.jetbrains.kotlin.maven.PluginOption
 
-class MyMavenPlugin : KotlinMavenPluginExtension {
+class AssignMavenPlugin : KotlinMavenPluginExtension {
   override fun getCompilerPluginId() = BuildConfig.KOTLIN_PLUGIN_ID
 
   override fun isApplicable(project: MavenProject, execution: MojoExecution) = true

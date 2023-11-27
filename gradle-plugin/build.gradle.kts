@@ -46,7 +46,7 @@ gradlePlugin {
       displayName = Publication.displayName
       description = Publication.description
       tags = Publication.tags
-      implementationClass = "io.github.kyay10.kotlincompilerplugin.MyGradlePlugin"
+      implementationClass = "io.github.kyay10.kotlinassign.AssignGradlePlugin"
     }
   }
 }

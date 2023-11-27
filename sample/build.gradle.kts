@@ -1,6 +1,6 @@
 plugins {
   kotlin("multiplatform") version "2.0.0-Beta1"
-  id("io.github.kyay10.kotlin-compiler-plugin") version "0.1.0"
+  id("io.github.kyay10.kotlin-assign") version "0.1.0"
 }
 
 group = "io.github.kyay10.kotlin-compiler-plugin"

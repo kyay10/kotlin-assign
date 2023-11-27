@@ -15,7 +15,7 @@
  */
 @file:Suppress("unused")
 
-package io.github.kyay10.kotlincompilerplugin.utils
+package io.github.kyay10.kotlinassign.utils
 
 import kotlin.reflect.KProperty
 import org.jetbrains.kotlin.compiler.plugin.AbstractCliOption

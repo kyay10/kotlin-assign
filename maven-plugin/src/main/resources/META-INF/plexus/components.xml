@@ -2,9 +2,9 @@
     <components>
         <component>
             <role>org.jetbrains.kotlin.maven.KotlinMavenPluginExtension</role>
-            <role-hint>kotlin-compiler-plugin</role-hint>
+            <role-hint>kotlin-assign</role-hint>
             <implementation>
-                io.github.kyay10.kotlincompilerplugin.MyMavenPlugin
+                io.github.kyay10.kotlinassign.AssignMavenPlugin
             </implementation>
             <configuration/>
         </component>
