@@ -21,7 +21,7 @@ dependencies {
   testImplementation(platform("org.junit:junit-bom:5.10.1"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable")
-  testImplementation("dev.zacsweers.kctfork:core:0.4.0")
+  testImplementation("dev.zacsweers.kctfork:core:0.7.0")
 }
 
 buildConfig {

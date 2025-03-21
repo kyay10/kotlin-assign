@@ -7,7 +7,7 @@ object Publication {
   val url = "https://github.com/${Developer.id}/$name"
   val vcs = "$url.git"
   val tags = listOf("kotlin")
-  val version = "0.1.0"
+  val version = "0.1.1"
 }
 
 object License {

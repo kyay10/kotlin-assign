@@ -19,6 +19,7 @@ import org.jetbrains.kotlin.diagnostics.rendering.BaseDiagnosticRendererFactory
 import org.jetbrains.kotlin.diagnostics.rendering.RootDiagnosticRendererFactory
 import org.jetbrains.kotlin.diagnostics.reportOn
 import org.jetbrains.kotlin.fir.FirSession
+import org.jetbrains.kotlin.fir.analysis.checkers.MppCheckerKind
 import org.jetbrains.kotlin.fir.analysis.checkers.context.CheckerContext
 import org.jetbrains.kotlin.fir.analysis.checkers.declaration.DeclarationCheckers
 import org.jetbrains.kotlin.fir.analysis.checkers.declaration.FirSimpleFunctionChecker
@@ -65,7 +66,7 @@ class AssignCheckers(session: FirSession) : FirAdditionalCheckersExtension(sessi
       }
 }
 
-object AssignFunctionChecker : FirSimpleFunctionChecker() {
+object AssignFunctionChecker : FirSimpleFunctionChecker(MppCheckerKind.Common) {
 
   override fun check(
       declaration: FirSimpleFunction,
@@ -86,7 +87,7 @@ object AssignFunctionChecker : FirSimpleFunctionChecker() {
   }
 }
 
-object AssignCallChecker : FirFunctionCallChecker() {
+object AssignCallChecker : FirFunctionCallChecker(MppCheckerKind.Common) {
   override fun check(
       expression: FirFunctionCall,
       context: CheckerContext,
@@ -105,7 +106,7 @@ object AssignCallChecker : FirFunctionCallChecker() {
   }
 
   private fun FirFunctionCall.isOverloadAssignCallCandidate() =
-      arguments.size == 1 && source?.kind == KtFakeSourceElementKind.DesugaredCompoundAssignment
+      arguments.size == 1 && source?.kind == KtFakeSourceElementKind.AssignmentPluginAltered
 
   private fun FirFunctionCall.isOverloadedAssignCallError(diagnostic: ConeDiagnostic): Boolean {
     val functionName =

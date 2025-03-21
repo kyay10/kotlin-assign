@@ -24,7 +24,6 @@ import org.jetbrains.kotlin.config.CompilerConfiguration
 import org.jetbrains.kotlin.extensions.internal.InternalNonStableExtensionPoints
 import org.jetbrains.kotlin.fir.extensions.FirExtensionRegistrar
 import org.jetbrains.kotlin.fir.extensions.FirExtensionRegistrarAdapter
-import org.jetbrains.kotlin.resolve.extensions.AssignResolutionAltererExtension
 
 @OptIn(ExperimentalCompilerApi::class)
 @AutoService(CompilerPluginRegistrar::class)
@@ -41,6 +40,5 @@ class AssignPluginRegistrar : CompilerPluginRegistrar() {
             +::AssignCheckers
           }
         })
-    AssignResolutionAltererExtension.registerExtension(K1AssignAlterer())
   }
 }
